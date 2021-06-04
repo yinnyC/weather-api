@@ -10,7 +10,7 @@ function Weather() {
   // --------------------------------------
   async function fetchWeather() {
     // fetch weather
-    const apikey = '26c2066c327cfb763d3f5709ee534c9b';
+    const apikey = process.env.REACT_APP_WEATHER_API_KEY;
     const path = `http://api.openweathermap.org/data/2.5/weather?zip=${zip}&appid=${apikey}&units=${unit}`;
     const res = await fetch(path);
     const json = await res.json();
@@ -25,7 +25,6 @@ function Weather() {
     setData({
       cod, message, temp, feelsLike, description,
     });
-    // setDate
   }
   // --------------------------------------
   return (
