@@ -4,7 +4,7 @@ A single page website that allows users to look up weather info according to the
 
 You can find the live site Demo 👉 [here](https://yinnyc.github.io/weather-api/)
 
-![Demo](./imgs/Demo.png)
+![Demo](./imgs/demo.png)
 
 ## Instruction to download the APP
 
