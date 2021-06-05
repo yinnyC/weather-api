@@ -1,0 +1,24 @@
+.WeatherDisplay{
+  margin: 50px 10px;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  height: auto;
+}
+.WeatherDisplay img {
+  background: rgba(215, 176, 176, 0.647);
+  padding:30px;
+  border-radius: 50%;
+}
+.ErrorMsg{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 50px 10px;
+}
+.Greeting {
+  margin: 2rem 2rem;
+}
+
+

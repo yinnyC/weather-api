@@ -1,18 +1,26 @@
+import './WeatherDisplay.css';
+
 function WeatherDisplay(props) {
   const {
-    temp, feelsLike, description, cod, message,
+    temp, feelsLike, description, cod, message, icon, humidity,
   } = props;
   if (cod !== 200) {
-    return <small>{message}</small>;
+    return (
+      <div className="ErrorMsg">
+        <img alt="erroricon" src="https://img.icons8.com/pastel-glyph/64/000000/error--v4.png" />
+        <small>{message}</small>
+      </div>
+    );
   }
   return (
     <div className="WeatherDisplay">
-      <h1>{temp}</h1>
-      <small>
-        Feels Like:
-        {feelsLike}
-      </small>
-      <p>{description }</p>
+      <div className="Info">
+        <h1>{temp}</h1>
+        <small>{description}</small>
+        <p>{`Feels Like: ${feelsLike}`}</p>
+        <p>{`Humidity: ${humidity}`}</p>
+      </div>
+      <img alt="icon" src={`http://openweathermap.org/img/wn/${icon}@2x.png`} />
     </div>
   );
 }

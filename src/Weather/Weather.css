@@ -1,28 +1,66 @@
-/* .Weather{
+.Weather{
+  border-radius: 1rem;
+  width: 600px;
+  border: 1px solid;
+  box-shadow: 13px 16px #333;
+  font-family: 'Courier New', Courier, monospace;
 }
 
-.Weather > form{
+/* .Weather > form{
   
 } */
 
+.Weather > form .inputBar{
+  width: 100%;
+  display: flex;
+}
+
 .Weather > form  input{
+  font-family: 'Courier New', Courier, monospace;
+  text-align: center;
   padding: 1rem;
   font-size: 1rem;
-  border: 1px solid;
-  margin: 0;
-  border-radius: 0.5rem 0 0 0.5rem;
+  margin: 0px;
+  flex-grow: 5;
+  border: none;
+  border-top: 0.1em #333 solid;
 }
 
 .Weather > form  button{
+  border: none;
   padding: 1rem;
   font-size: 1rem;
-  border: 1px solid;
   margin: 0 0 0 -1px;
   background-color: #333;
   color: #eee;
-  border-radius: 0 0.5rem 0.5rem 0;
+  flex-grow: 2;
 }
 
 .Weather > form > select {
-  margin: 1rem 0;
+  border: none;
+  border-top: 0.1em #eee solid;
+  margin:0;
+  width: 100%;
+  padding: 1rem;
+  background-color: #333;
+  color: #eee;
+  font-weight: bold;
+  font-family: inherit;
+  text-transform: capitalize;
+}
+
+.Weather > form .RadioButtons{
+  display: flex;
+  flex-direction: column;
+}
+
+.Weather > form .RadioButtons label{
+  text-align: end;
+  padding: 1rem;
+  width: 95%;
+  border-top: 1px #333 solid;
+  text-transform: capitalize;
+}
+.Weather > form .RadioButtons label > input{
+  float: left;
 }

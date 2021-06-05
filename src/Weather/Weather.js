@@ -19,28 +19,33 @@ function Weather() {
       setData({ cod, message });
       return;
     }
-    const { temp } = json.main;
+    const { temp, humidity } = json.main;
     const feelsLike = json.main.feels_like;
-    const { description } = json.weather[0];
+    const { description, icon } = json.weather[0];
     setData({
-      cod, message, temp, feelsLike, description,
+      cod, message, temp, feelsLike, description, humidity, icon,
     });
   }
   // --------------------------------------
   return (
     <div className="Weather">
-      {data && <WeatherDisplay {...data} />}
+      {data ? <WeatherDisplay {...data} /> : <h2 className="Greeting">How&apos;s the weather?</h2>}
       <form onSubmit={(e) => {
         e.preventDefault();
         fetchWeather();
       }}
       >
-        <div>
+        <div className="inputBar">
           <input
             type="number"
             placeholder="Enter Zip Code"
             value={zip}
-            onChange={(e) => setZip(e.target.value)}
+            onChange={(e) => {
+              setZip(e.target.value);
+              if (e.target.value === '') {
+                setData(null);
+              }
+            }}
           />
           <button type="submit">Submit</button>
         </div>
@@ -52,21 +57,23 @@ function Weather() {
           <option value="imperial">imperial</option>
           <option value="standard">standard</option>
         </select>
-        <RadioButton
-          label="metric"
-          unit={unit}
-          onChange={() => setUnit('metric')}
-        />
-        <RadioButton
-          label="imperial"
-          unit={unit}
-          onChange={() => setUnit('imperial')}
-        />
-        <RadioButton
-          label="standard"
-          unit={unit}
-          onChange={() => setUnit('standard')}
-        />
+        <div className="RadioButtons">
+          <RadioButton
+            label="metric"
+            unit={unit}
+            onChange={() => setUnit('metric')}
+          />
+          <RadioButton
+            label="imperial"
+            unit={unit}
+            onChange={() => setUnit('imperial')}
+          />
+          <RadioButton
+            label="standard"
+            unit={unit}
+            onChange={() => setUnit('standard')}
+          />
+        </div>
       </form>
     </div>
   );

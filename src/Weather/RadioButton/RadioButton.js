@@ -8,7 +8,7 @@ function RadioButton(props) {
         checked={unit === label}
         onChange={onChange}
       />
-      metric
+      {label}
     </label>
   );
 }
