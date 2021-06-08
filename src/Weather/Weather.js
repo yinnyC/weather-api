@@ -7,11 +7,10 @@ function Weather() {
   const [zip, setZip] = useState('94110');
   const [unit, setUnit] = useState('metric');
   const [data, setData] = useState(null);
+  const apikey = process.env.REACT_APP_WEATHER_API_KEY;
   // --------------------------------------
-  async function fetchWeather() {
+  async function fetchWeather(path) {
     // fetch weather
-    const apikey = process.env.REACT_APP_WEATHER_API_KEY;
-    const path = `http://api.openweathermap.org/data/2.5/weather?zip=${zip}&appid=${apikey}&units=${unit}`;
     const res = await fetch(path);
     const json = await res.json();
     const { cod, message } = json;
@@ -26,13 +25,34 @@ function Weather() {
       cod, message, temp, feelsLike, description, humidity, icon,
     });
   }
+  function fetchWeatherByZip() {
+    const path = `https://api.openweathermap.org/data/2.5/weather?zip=${zip}&appid=${apikey}&units=${unit}`;
+    fetchWeather(path);
+  }
+
+  function fetchWeatherByGeo() {
+    // get geo coords
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 500,
+      maximumAge: 0,
+    };
+    navigator.geolocation.getCurrentPosition((pos) => {
+      const { latitude, longitude } = pos.coords;
+      // make path
+      const path = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apikey}&units=${unit}`;
+      fetchWeather(path);
+    }, (err) => {
+      console.warn(err.message);
+    }, options);
+  }
   // --------------------------------------
   return (
     <div className="Weather">
       {data ? <WeatherDisplay {...data} /> : <h2 className="Greeting">How&apos;s the weather?</h2>}
       <form onSubmit={(e) => {
         e.preventDefault();
-        fetchWeather();
+        fetchWeatherByZip();
       }}
       >
         <div className="inputBar">
@@ -75,6 +95,13 @@ function Weather() {
           />
         </div>
       </form>
+      <button
+        className="getByGeo"
+        type="button"
+        onClick={fetchWeatherByGeo}
+      >
+        Get Weather By Location
+      </button>
     </div>
   );
 }
