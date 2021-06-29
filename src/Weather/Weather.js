@@ -1,11 +1,14 @@
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import RadioButton from './RadioButton/RadioButton';
 import WeatherDisplay from './WeatherDisplay/WeatherDisplay';
+import { setZip, setUnit } from '../actions';
 import './Weather.css';
 
 function Weather() {
-  const [zip, setZip] = useState('94110');
-  const [unit, setUnit] = useState('metric');
+  const dispatch = useDispatch();
+  const form = useSelector((state) => state.weatherData);
+  const { zip, unit } = form;
   const [data, setData] = useState(null);
   const apikey = process.env.REACT_APP_WEATHER_API_KEY;
   // --------------------------------------
@@ -61,7 +64,7 @@ function Weather() {
             placeholder="Enter Zip Code"
             value={zip}
             onChange={(e) => {
-              setZip(e.target.value);
+              dispatch(setZip(e.target.value));
               if (e.target.value === '') {
                 setData(null);
               }
@@ -71,29 +74,12 @@ function Weather() {
         </div>
         <select
           value={unit}
-          onChange={(e) => setUnit(e.target.value)}
+          onChange={(e) => dispatch(setUnit(e.target.value))}
         >
           <option value="metric">metric</option>
           <option value="imperial">imperial</option>
           <option value="standard">standard</option>
         </select>
-        <div className="RadioButtons">
-          <RadioButton
-            label="metric"
-            unit={unit}
-            onChange={() => setUnit('metric')}
-          />
-          <RadioButton
-            label="imperial"
-            unit={unit}
-            onChange={() => setUnit('imperial')}
-          />
-          <RadioButton
-            label="standard"
-            unit={unit}
-            onChange={() => setUnit('standard')}
-          />
-        </div>
       </form>
       <button
         className="getByGeo"

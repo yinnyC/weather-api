@@ -1,6 +1,7 @@
 .Weather{
   border-radius: 1rem;
-  width: 600px;
+  width: 90%;
+  height: 70%;
   border: 1px solid;
   box-shadow: 13px 16px #333;
   font-family: 'Courier New', Courier, monospace;
@@ -68,7 +69,7 @@
 .Weather .getByGeo{
   width: 100%;
   padding: 1rem;
-  border-radius: 0 0 1rem 1rem;
+  /* border-radius: 0 0 1rem 1rem; */
   border: none;
   border-top: 1px #333 solid;
   background-color: rgba(31, 30, 30, 0.647);

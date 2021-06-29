@@ -24,5 +24,8 @@ module.exports = {
     'max-len': 0,
     'react/react-in-jsx-scope': 0,
     'no-console': 0,
+    'import/prefer-default-export': 0,
+    'no-unused-vars': 0,
+    'import/no-named-as-default-member': 0,
   },
 };
