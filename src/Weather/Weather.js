@@ -23,7 +23,7 @@ function Weather() {
       <div className="Display">
         {data ? <CurrentDisplay {...data} /> : <h2 className="Greeting">Hi There 👋🏻 How&apos;s the weather?</h2>}
         <hr />
-        {forcastDays ? <ForcastDisplay forcastDays={forcastDays} /> : <h2 className="Greeting">Enter yout Zipcode to find out</h2>}
+        {forcastDays ? <ForcastDisplay forcastDays={forcastDays} /> : <h2 className="Greeting">Enter your Zipcode to find out</h2>}
       </div>
       <form>
         <div className="inputBar">
