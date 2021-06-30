@@ -1,8 +1,8 @@
-import './WeatherDisplay.css';
+import './CurrentDisplay.css';
 
-function WeatherDisplay(props) {
+function CurrentDisplay(props) {
   const {
-    temp, feelsLike, description, cod, message, icon, humidity,
+    temp, feelsLike, description, cod, message, icon, humidity, name,
   } = props;
   if (cod !== 200) {
     return (
@@ -13,8 +13,9 @@ function WeatherDisplay(props) {
     );
   }
   return (
-    <div className="WeatherDisplay">
+    <div className="CurrentDisplay">
       <div className="Info">
+        <h2>{name}</h2>
         <h1>{temp}</h1>
         <small>{description}</small>
         <p>{`Feels Like: ${feelsLike}`}</p>
@@ -25,4 +26,4 @@ function WeatherDisplay(props) {
   );
 }
 
-export default WeatherDisplay;
+export default CurrentDisplay;

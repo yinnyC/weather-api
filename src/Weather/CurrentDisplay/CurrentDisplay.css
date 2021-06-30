@@ -1,11 +1,10 @@
-.WeatherDisplay{
-  margin: 50px 50px;
+.CurrentDisplay{
   display: flex;
   justify-content: space-between;
-  width:calc(100%-100px);
+  width:calc(100%-200);
   height: auto;
 }
-.WeatherDisplay img {
+.CurrentDisplay img {
   background: rgba(215, 176, 176, 0.647);
   padding:30px;
   border-radius: 50%;

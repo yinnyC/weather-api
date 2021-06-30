@@ -1,78 +1,86 @@
 .Weather{
   border-radius: 1rem;
   width: 90%;
-  height: 70%;
+  height: 80%;
   border: 1px solid;
   box-shadow: 13px 16px #333;
-  font-family: 'Courier New', Courier, monospace;
+  position:relative;
+  display: flex;
 }
 
-/* .Weather > form{
-  
-} */
+.Weather > form {
+  width: 100%;
+  position:absolute;
+  bottom:0;
+}
 
 .Weather > form .inputBar{
   width: 100%;
   display: flex;
+  flex-direction: row;
+  justify-content: stretch;
 }
 
-.Weather > form  input{
-  font-family: 'Courier New', Courier, monospace;
+.Weather > form .inputBar label{
+  min-width: 20%;
+  background-color: rgba(31, 30, 30, 0.647);
+  color: #eee;
+  text-align: center;
+  padding: 1rem;
+  flex-grow: 1;
+}
+
+.Weather > form .inputBar input{
   text-align: center;
   padding: 1rem;
   font-size: 1rem;
   margin: 0px;
   flex-grow: 5;
-  border: none;
-  border-top: 0.1em #333 solid;
+  border-radius: 0;
+  border: 1px solid rgba(31, 30, 30, 0.647);
 }
 
-.Weather > form  button{
-  border: none;
-  padding: 1rem;
-  font-size: 1rem;
-  margin: 0 0 0 -1px;
-  background-color: #333;
-  color: #eee;
-  flex-grow: 2;
-}
-
-.Weather > form > select {
-  border: none;
-  border-top: 0.1em #eee solid;
-  margin:0;
+.Weather > form .selectBar{
   width: 100%;
-  padding: 1rem;
-  background-color: #333;
-  color: #eee;
-  font-weight: bold;
-  font-family: inherit;
-  text-transform: capitalize;
-}
-
-.Weather > form .RadioButtons{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: stretch;
 }
 
-.Weather > form .RadioButtons label{
-  text-align: end;
+.Weather > form .selectBar label{
+  min-width: 20%;
+  background-color: #eee;
+  color: #333;
+  text-align: center;
   padding: 1rem;
-  width: 95%;
-  border-top: 1px #333 solid;
-  text-transform: capitalize;
-}
-.Weather > form .RadioButtons label > input{
-  float: left;
+  flex-grow: 1;
 }
 
-.Weather .getByGeo{
-  width: 100%;
+.Weather > form .selectBar select{
+  margin:0;
   padding: 1rem;
-  /* border-radius: 0 0 1rem 1rem; */
-  border: none;
-  border-top: 1px #333 solid;
   background-color: rgba(31, 30, 30, 0.647);
+  color: #eee;
   font-weight: bold;
   font-family: inherit;
+  text-transform: capitalize;
+  flex-grow: 5;
+  text-align-last:center;
+}
+
+#currentWeather{
+padding: 1rem;
+width: 100%;
+background-color: #333;
+font-weight: bold;
+color: #eee;
+border: 1px #333;
+border-radius: 0 0 0.9rem 0.9rem;
+border-right: 1px #333 solid;
+}
+
+.Display{
+  height: auto;
+  width: 100%;
+  margin: 4rem 5rem;
 }
